@@ -1,0 +1,24 @@
+# ===================================================================
+# Spring Boot configuration for the "dev" profile.
+# ===================================================================
+spring:
+  application:
+    name: OnlineFIR
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/LunchBoxService
+      auto-index-creation: true
+  output:
+    ansi:
+      enabled: ALWAYS # To enable ANSI color on console.
+# ===================================================================
+# Application specific configuration for the "dev" profile.
+# ===================================================================
+app:
+  apiKey: d189c77707f14228bc8b4ec9ab467d3a
+  # Logging configuration.
+  logging:
+    lunchBoxServiceLogFilePath: C:/Users/akskumar/var/logfiles
+    maxHistory: 60
+    totalSizeCap: 20MB
+
