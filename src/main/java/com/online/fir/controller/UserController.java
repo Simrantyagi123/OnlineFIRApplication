@@ -31,9 +31,11 @@ public class UserController {
         return UserMapper.toApi(userService.signUp(user));
     }
 
-    @GetMapping(Constants.STATION)
+    @PostMapping(Constants.LOGIN)
     @ResponseStatus(HttpStatus.OK)
-    public List<UserDto> login(){
-        return null;
+    public UserDto login(@RequestBody UserDto userDto){
+        log.info("Inside UserController : login");
+        User user = UserMapper.toEntity(userDto);
+        return UserMapper.toApi(userService.login(user));
     }
 }

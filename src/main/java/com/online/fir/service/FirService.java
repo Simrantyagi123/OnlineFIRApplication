@@ -8,7 +8,9 @@ import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.experimental.FieldDefaults;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 
@@ -26,7 +28,7 @@ public class FirService {
         }catch (Exception e)
         {
             log.error("Exception occurred while saving FIR details :",e);
-            throw e;
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, e.getMessage());
         }
         return firDetail;
     }
@@ -39,7 +41,7 @@ public class FirService {
         }catch (Exception e)
         {
             log.error("Exception occurred while fetching FIR details :",e);
-            throw e;
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, e.getMessage());
         }
         return firDetails;
     }
@@ -52,7 +54,7 @@ public class FirService {
         }catch (Exception e)
         {
             log.error("Exception occurred while fetching FIR details by id: {} : {}", e, firId);
-            throw e;
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, e.getMessage());
         }
         return firDetail;
     }

@@ -14,9 +14,11 @@ public class UserDto {
     @NotNull
     String phone;
 
+    @NotNull
     String firstName;
 
     String lastName;
 
+    @NotNull
     String password;
 }

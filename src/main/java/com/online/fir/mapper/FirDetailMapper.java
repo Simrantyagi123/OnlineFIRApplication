@@ -18,7 +18,7 @@ public class FirDetailMapper {
                     .crimeDetails(firDetail.getCrimeDetails())
                     .complainerName(firDetail.getComplainerName())
                     .address(firDetail.getAddress())
-                    .phone(firDetail.getPhone()).build();
+                    .complainerPhone(firDetail.getComplainerPhone()).build();
         }
     }
 
@@ -32,7 +32,7 @@ public class FirDetailMapper {
                     .crimeDetails(firDetailDto.getCrimeDetails())
                     .complainerName(firDetailDto.getComplainerName())
                     .address(firDetailDto.getAddress())
-                    .phone(firDetailDto.getPhone()).build();
+                    .complainerPhone(firDetailDto.getComplainerPhone()).build();
         }
     }
 }

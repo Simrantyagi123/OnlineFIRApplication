@@ -38,6 +38,6 @@ public class FirDetail {
     @Field("ComplainerName")
     String complainerName;
 
-    @Field("Phone")
-    String phone;
+    @Field("ComplainerPhone")
+    String complainerPhone;
 }

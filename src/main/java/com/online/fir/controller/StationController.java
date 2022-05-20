@@ -49,14 +49,10 @@ public class StationController {
         }
     }
 
-    @GetMapping(Constants.STATION)
+    @GetMapping(Constants.STATION + Constants.GET_BY_NAME)
     @ResponseStatus(HttpStatus.OK)
     public StationDto getStationByName(@PathVariable String name) {
-        try {
-            log.info("Inside StationController : getStationById");
-            return StationMapper.toApi(stationService.getStationByName(name));
-        } catch (Exception e) {
-            throw new GenericException(HttpStatus.BAD_REQUEST, Constants.TECHNICAL_ERROR_MSG);
-        }
+        log.info("Inside StationController : getStationById");
+        return StationMapper.toApi(stationService.getStationByName(name));
     }
 }

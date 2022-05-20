@@ -23,5 +23,5 @@ public class FirDetailDto {
 
     String complainerName;
 
-    String phone;
+    String complainerPhone;
 }
