@@ -16,6 +16,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -24,13 +25,14 @@ import java.util.stream.Collectors;
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 @AllArgsConstructor(access = AccessLevel.PACKAGE)
 @Slf4j
+@CrossOrigin("*")
 public class FirController {
 
     FirService firService;
 
     @PostMapping(Constants.FIR)
     @ResponseStatus(HttpStatus.CREATED)
-    public FirDetailDto createFIR(@RequestBody FirDetailDto firDetailDto) {
+    public FirDetailDto createFIR(@RequestBody @Valid FirDetailDto firDetailDto) {
         try {
             log.info("Inside FirController : createFIR");
             FirDetail firDetail = FirDetailMapper.toEntity(firDetailDto);

@@ -11,6 +11,9 @@ import javax.validation.constraints.NotNull;
 @Builder
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class FirDetailDto {
+
+    String firId;
+
     @NotNull
     String name;
 

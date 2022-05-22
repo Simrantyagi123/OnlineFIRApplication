@@ -13,6 +13,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -21,13 +22,14 @@ import java.util.stream.Collectors;
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 @AllArgsConstructor(access = AccessLevel.PACKAGE)
 @Slf4j
+@CrossOrigin("*")
 public class StationController {
 
     StationService stationService;
 
     @PostMapping(Constants.STATION)
     @ResponseStatus(HttpStatus.CREATED)
-    public StationDto createStation(@RequestBody StationDto stationDto) {
+    public StationDto createStation(@RequestBody @Valid StationDto stationDto) {
         try {
             log.info("Inside StationController : createStation");
             Station station = StationMapper.toEntity(stationDto);

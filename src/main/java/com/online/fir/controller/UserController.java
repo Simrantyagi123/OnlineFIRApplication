@@ -12,6 +12,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -19,22 +20,23 @@ import java.util.List;
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 @AllArgsConstructor(access = AccessLevel.PACKAGE)
 @Slf4j
+@CrossOrigin("*")
 public class UserController {
 
     UserService userService;
 
     @PostMapping(Constants.USER)
     @ResponseStatus(HttpStatus.CREATED)
-    public UserDto signUp(@RequestBody UserDto userDto) {
-        log.info("Inside UserController : signUp");
+    public UserDto signUp(@RequestBody @Valid UserDto userDto) {
+        log.info("Inside UserController : signUp, User Details:{}",userDto);
         User user = UserMapper.toEntity(userDto);
         return UserMapper.toApi(userService.signUp(user));
     }
 
     @PostMapping(Constants.LOGIN)
     @ResponseStatus(HttpStatus.OK)
-    public UserDto login(@RequestBody UserDto userDto){
-        log.info("Inside UserController : login");
+    public UserDto login(@RequestBody @Valid UserDto userDto){
+        log.info("Inside UserController : login, User Details:{}",userDto);
         User user = UserMapper.toEntity(userDto);
         return UserMapper.toApi(userService.login(user));
     }
